@@ -69,6 +69,13 @@ export default {
         : process.env.PROD_API_BASE_URL || '/users-service/api'
   },
 
+  router:
+    process.env.NODE_ENV === 'development'
+      ? {}
+      : {
+          base: '/users-service-ui/'
+        },
+
   proxy:
     process.env.NODE_ENV === 'development'
       ? {
