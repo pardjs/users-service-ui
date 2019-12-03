@@ -20,6 +20,7 @@
         <b>Selection:</b>
         {{ checkboxGroup }}
       </p>
+      <b-button type="is-primary" @click="save()">Save</b-button>
     </section>
   </section>
 </template>
@@ -48,7 +49,27 @@ export default {
   methods: {
     ...mapMutations({
       fetchAuthPoints: 'authPoints/fetch'
-    })
+    }),
+    save() {
+      this.$axios
+        .put(`roles/${this.id}/auth-points`, {
+          authPointIds: this.checkboxGroup
+        })
+        .then(res => {
+          this.$buefy.toast.open({
+            message: 'Saved!',
+            type: 'is-success'
+          })
+          this.$router.push('/roles')
+        })
+        .catch(err => {
+          console.error(err)
+          this.$buefy.toast.open({
+            message: 'Error accurred!',
+            type: 'is-danger'
+          })
+        })
+    }
   }
 }
 </script>

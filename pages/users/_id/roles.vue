@@ -4,18 +4,20 @@
       Set {{ user.name }}( {{ user.username }} )'s Roles
       <b-icon icon="rocket" size="is-large" />
     </h2>
-    <b-checkbox
-      v-for="role in roles"
-      :key="role.id"
-      v-model="roleIds"
-      native-value="Flint"
-    >
-      {{ role.name }}
-    </b-checkbox>
+    <div v-for="item in $store.state.roles.list" :key="item.id" class="field">
+      <b-checkbox v-model="roleIds" :native-value="item.id">
+        {{ item.name }}
+      </b-checkbox>
+    </div>
+    <p class="content">
+      <b>Selection:</b>
+      {{ roleIds }}
+    </p>
+    <b-button type="is-info" @click="save()">Save</b-button>
   </section>
 </template>
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 
 export default {
   data() {
@@ -25,10 +27,7 @@ export default {
         username: '',
         name: ''
       },
-      roleIds: [],
-      ...mapState({
-        roles: 'roles/list'
-      })
+      roleIds: []
     }
   },
   async created() {
@@ -57,7 +56,20 @@ export default {
   methods: {
     ...mapMutations({
       fetch: 'roles/fetch'
-    })
+    }),
+    save() {
+      this.$axios
+        .put(`management/users/${this.userId}/roles`, {
+          roleIds: this.roleIds.map(roleId => parseInt(roleId, 10))
+        })
+        .then(res => {
+          this.$buefy.toast.open({
+            message: 'Saved!',
+            type: 'is-success'
+          })
+          this.$router.push('/users')
+        })
+    }
   }
 }
 </script>

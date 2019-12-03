@@ -21,8 +21,10 @@
           }}</span>
         </b-table-column>
         <b-table-column label="Actions">
-          <b-button @click="goEdit(props.row)">Edit</b-button>
-          <b-button @click="goSetAuthPoints(props.row)"
+          <b-button size="is-small" type="is-info" @click="goEdit(props.row)"
+            >Edit</b-button
+          >
+          <b-button size="is-small" @click="goSetAuthPoints(props.row)"
             >Set AuthPoints</b-button
           >
         </b-table-column>
