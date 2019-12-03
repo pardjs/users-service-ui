@@ -80,7 +80,7 @@ export default {
     process.env.NODE_ENV === 'development'
       ? {
           '/api': {
-            target: 'http://localhost:5000/api/',
+            target: 'http://localhost:5000/',
             pathRewrite: { '^/api': '' }
           }
         }

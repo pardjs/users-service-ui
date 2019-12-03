@@ -2,13 +2,13 @@
   <section class="section">
     <div class="columns is-mobile">
       <card title="Users" icon="account">
-        <nuxt-link to="users-list">Users</nuxt-link>
+        <nuxt-link to="users">Users</nuxt-link>
       </card>
       <card title="Roles" icon="account-multiple">
-        Roles
+        <nuxt-link to="roles">Roles</nuxt-link>
       </card>
       <card title="Auth Points" icon="circle-edit-outline">
-        Auth Points
+        <nuxt-link to="auth-points">Auth Points</nuxt-link>
       </card>
     </div>
   </section>

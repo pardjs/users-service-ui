@@ -7,10 +7,7 @@ export const state = () => ({
 
 export const mutations = {
   add(state, text) {
-    state.list.push({
-      text: text,
-      done: false
-    })
+    state.list.push({ text, done: false })
   },
   remove(state, { todo }) {
     state.list.splice(state.list.indexOf(todo), 1)
@@ -19,7 +16,7 @@ export const mutations = {
     todo.done = !todo.done
   },
   fetch(state) {
-    this.$axios.get('users').then(res => {
+    this.$axios.get('management/users').then(res => {
       state.list = res.data.data
     })
   },
@@ -33,7 +30,7 @@ export const mutations = {
       console.log(data)
       state.accessToken = data.token
       window.localStorage.setItem('accessToken', data.token)
-      this.$router.push('/users-list')
+      this.$router.push('/users')
     } catch (err) {
       console.error(err)
       const message = err.response

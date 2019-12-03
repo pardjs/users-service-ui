@@ -4,7 +4,12 @@
       Set {{ user.name }}( {{ user.username }} )'s Roles
       <b-icon icon="rocket" size="is-large" />
     </h2>
-    <b-checkbox v-for="role in roles" :key="role.id" v-model="roleIds" native-value="Flint">
+    <b-checkbox
+      v-for="role in roles"
+      :key="role.id"
+      v-model="roleIds"
+      native-value="Flint"
+    >
       {{ role.name }}
     </b-checkbox>
   </section>

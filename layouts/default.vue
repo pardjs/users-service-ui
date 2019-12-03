@@ -7,7 +7,7 @@
     >
       <div class="navbar-brand">
         <a class="navbar-item" href="/">
-          <b class="has-text-white">UsersService </b> Dashboard
+          <b class="has-text-white">Auth Service </b> Dashboard
         </a>
 
         <div class="navbar-burger">
@@ -60,7 +60,7 @@ export default {
         {
           title: 'Auth Points',
           icon: 'circle-edit-outline',
-          to: { name: 'auth-points-list' }
+          to: { name: 'auth-points' }
         }
       ]
     }

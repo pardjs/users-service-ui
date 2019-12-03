@@ -5,12 +5,12 @@ export const state = () => ({
 export const mutations = {
   add(state, text) {
     state.list.push({
-      text: text,
+      text,
       done: false
     })
   },
   fetch(state) {
-    this.$axios.get('roles').then(res => {
+    this.$axios.get('management/roles').then(res => {
       state.list = res.data.data
     })
   },

@@ -12,14 +12,19 @@
         <b-table-column field="name" label="Name">{{
           props.row.name
         }}</b-table-column>
+        <b-table-column field="shownInApp" label="Shown In App">{{
+          props.row.shownInApp
+        }}</b-table-column>
         <b-table-column field="date" label="Created At" centered>
           <span class="tag is-success">{{
             new Date(props.row.createdAt).toLocaleDateString()
           }}</span>
         </b-table-column>
         <b-table-column label="Actions">
-          <b-button>Edit</b-button>
-          <b-button>Set AuthPoints</b-button>
+          <b-button @click="goEdit(props.row)">Edit</b-button>
+          <b-button @click="goSetAuthPoints(props.row)"
+            >Set AuthPoints</b-button
+          >
         </b-table-column>
       </template>
       <template slot="empty">
@@ -33,17 +38,17 @@
         </section>
       </template>
     </b-table>
+    <b-button class="btn-create" type="is-primary" @click="goCreate()"
+      >Create a new Role</b-button
+    >
   </section>
 </template>
 <script>
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 export default {
   data() {
     return {
-      data: [],
-      ...mapState({
-        list: 'roles/list'
-      })
+      data: []
     }
   },
   created() {
@@ -52,7 +57,16 @@ export default {
   methods: {
     ...mapMutations({
       fetch: 'roles/fetch'
-    })
+    }),
+    goCreate() {
+      this.$router.push('/roles/new/form')
+    },
+    goEdit(role) {
+      this.$router.push('/roles/' + role.id + '/form')
+    },
+    goSetAuthPoints(role) {
+      this.$router.push('/roles/' + role.id + '/auth-points')
+    }
   }
 }
 </script>

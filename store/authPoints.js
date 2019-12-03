@@ -4,14 +4,14 @@ export const state = () => ({
 
 export const mutations = {
   fetch(state) {
-    this.$axios.get('auth-points').then(res => {
+    return this.$axios.get('auth-points').then(res => {
       state.list = res.data.data
       console.log(state.list)
     })
   },
   add(state, text) {
     state.list.push({
-      text: text,
+      text,
       done: false
     })
   },
