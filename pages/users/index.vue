@@ -15,6 +15,12 @@
         <b-table-column field="username" label="Username">{{
           props.row.username
         }}</b-table-column>
+        <b-table-column field="email" label="Email">{{
+          props.row.email
+        }}</b-table-column>
+        <b-table-column field="mobile" label="Mobile">{{
+          props.row.mobile
+        }}</b-table-column>
         <b-table-column field="roles" label="Roles">{{
           props.row.roles.map(role => role.name).join(',')
         }}</b-table-column>

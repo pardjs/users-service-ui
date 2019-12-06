@@ -13,7 +13,10 @@
           props.row.name
         }}</b-table-column>
         <b-table-column field="shownInApp" label="Shown In App">{{
-          props.row.shownInApp
+          props.row.shownInApp | yesNo
+        }}</b-table-column>
+        <b-table-column field="isDefault" label="Is Default">{{
+          props.row.isDefault | yesNo
         }}</b-table-column>
         <b-table-column field="date" label="Created At" centered>
           <span class="tag is-success">{{
